@@ -22,7 +22,7 @@
   function handleSubmit() {
 
 
-    toYaml({title, distance, googleMapUrl, diameter, shoulder, homeLanes, lapLanes, surfaceType, surfaceColor, steepleLocation}, (err, yaml) => {
+    toYaml({title, distance, googleMapUrl, diameter, shoulder, homeLanes, lapLanes, surfaceType, surfaceColor, steepleLocation, features}, (err, yaml) => {
       if(err) console.log(err)
       output = yaml
     })
@@ -78,11 +78,11 @@
     // elevationSvc.getElevationForLocations(elevOpts, (results, status) => {
     //   console.log(`elevation service status: ${status}`)
     //   let elevation = results[0].elevation
-
+console.log(features)
       return cb(null, `---
   title: "${title}"
   date: ${(new Date).toISOString()}
-  tags: [${features.join(", ")}]
+  tags: [${features.map((f)=>{ return `"${f}"` }).join(", ")}]
   latitude: ${latitude}
   longitude: ${longitude}
   elevation_meters: -1
