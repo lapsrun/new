@@ -78,7 +78,7 @@
     // elevationSvc.getElevationForLocations(elevOpts, (results, status) => {
     //   console.log(`elevation service status: ${status}`)
     //   let elevation = results[0].elevation
-console.log(features)
+
       return cb(null, `---
   title: "${title}"
   date: ${(new Date).toISOString()}
