@@ -14,13 +14,15 @@
   let lapLanes = ''
   let surfaceType = 'artificial'
   let surfaceColor = 'red'
+  let steepleLocation = ''
+  let features = ''
 
   let output = ''
 
   function handleSubmit() {
 
 
-    toYaml({title, distance, googleMapUrl, diameter, shoulder, homeLanes, lapLanes, surfaceType, surfaceColor}, (err, yaml) => {
+    toYaml({title, distance, googleMapUrl, diameter, shoulder, homeLanes, lapLanes, surfaceType, surfaceColor, steepleLocation}, (err, yaml) => {
       if(err) console.log(err)
       output = yaml
     })
@@ -80,7 +82,7 @@
       return cb(null, `---
   title: "${title}"
   date: ${(new Date).toISOString()}
-  tags: []
+  tags: [${features.join(", ")}]
   latitude: ${latitude}
   longitude: ${longitude}
   elevation_meters: -1
@@ -143,7 +145,7 @@
   </div>
   <div>
     <label>Steeplechase Water Location</label>
-    <select name="steepleLocation">
+    <select bind:value={steepleLocation}>
       <option value="n/a">Not Applicable</option>
       <option value="inside">Inside</option>
       <option value="outside">Outside</option>
@@ -152,23 +154,23 @@
   <div>
     <label>Features</label>
     <div>
-      <input type="checkbox" value="blind" name="features" />
+      <input type="checkbox" value="blind" bind:group={features} />
       <label for="blind">Blind</label>
     </div>
     <div>
-      <input type="checkbox" value="double-barrel" name="features" />
+      <input type="checkbox" value="double-barrel" bind:group={features} />
       <label for="double-barrel">Double Barrel</label>
     </div>
     <div>
-      <input type="checkbox" value="iaaf-certified" name="features" />
+      <input type="checkbox" value="iaaf-certified" bind:group={features} />
       <label for="iaaf">IAAF Certified</label>
     </div>
     <div>
-      <input type="checkbox" value="olympic" name="features" />
+      <input type="checkbox" value="olympic" bind:group={features} />
       <label for="olympic">Olympic Venue</label>
     </div>
     <div>
-      <input type="checkbox" value="interesting" name="features" />
+      <input type="checkbox" value="interesting" bind:group={features}/>
       <label for="interesting">Interesting</label>
     </div>
   </div>

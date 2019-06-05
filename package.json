@@ -14,9 +14,10 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "serve": "sirv public --port \"$PORT\"",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
-    "start": "sirv public",
+    "start": "npm-run-all build serve",
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
