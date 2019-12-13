@@ -20,6 +20,6 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "npm": "^6.9.0"
+    "npm": "^6.13.4"
   }
 }
